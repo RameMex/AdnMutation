@@ -14,7 +14,7 @@ export class MutationService {
         const arr: Array<String> = Object.values(createAdnDTO)
         const nose = mutation.isMutant(arr[0])
         console.log(nose)
-        const isAnotherADN = await this.adnModel.findOne({adn:createAdnDTO.adn});
+        const isAnotherADN = await this.adnModel.findOne({adn:createAdnDTO.dna});
         return isAnotherADN
     }
 
