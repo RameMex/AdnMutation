@@ -1,3 +1,3 @@
 export class CreateAdnDTO {
-    readonly adn : object;
+    readonly dna : object;
 }
