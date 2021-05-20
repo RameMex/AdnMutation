@@ -1,4 +1,5 @@
-import { Controller, Get,Post,Body } from '@nestjs/common';
+import { Controller, Get,Post,Body} from '@nestjs/common';
+import { Response } from 'express';
 import { CreateAdnDTO } from '../dto/adn.dto';
 import {MutationService} from '../services/mutation.service';
 
@@ -8,12 +9,12 @@ export class MutationController {
 
     @Post('mutation')
     mutation(@Body() createAdnDTO:CreateAdnDTO){
-        
-        const bus = this.mutationService.createAdn(createAdnDTO);
-        return bus;
+        this.mutationService.updateStates(createAdnDTO);
+        this.mutationService.createAdn(createAdnDTO);
+        return this.mutationService.isMutantResult(createAdnDTO);
     }
     @Get('stats')
     stats(){
-        return 'estadisticas'
+        return this.mutationService.getStats();
     }
 }   
